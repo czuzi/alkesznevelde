@@ -37,7 +37,6 @@ def getDrunk():
     for x in range(4):
         puke()
         print('puke')
-    print('sleep')
     time.sleep(5)
 
 def getSober():
