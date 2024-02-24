@@ -37,28 +37,51 @@ def getDrunk():
     for x in range(4):
         puke()
         print('puke')
+    print('sleep')
+    time.sleep(5)
 
 def getSober():
     getClinicPage()
     getSoberInClinic()
+
+def getMoney(businessPage):
+    moneyStartString = '<td><b>Pénzed:</b></td><td style="text-align:right;">'
+    moneyEndString = ' $</td>'
+    moneyStartIndex = businessPage.find(moneyStartString) + len(moneyStartString)
+    moneyEndIndex = businessPage.find(moneyEndString)
+    money = businessPage[moneyStartIndex:moneyEndIndex]
+    print(money)
+
+def getDrunkness(businessPage):
+    drunkStartString = '<td><b>Részegséged:</b></td><td style="text-align:right;">'
+    drunkEndString = '% <span '
+    drunkStartIndex = businessPage.find(drunkStartString) + len(drunkStartString)
+    drunkEndIndex = businessPage.find(drunkEndString)
+    drunkness = businessPage[drunkStartIndex:drunkEndIndex]
+    print(drunkness)
 
 def protectionMoney():
     while True:
         businessPage = getBusinessPage().text
         energy = getEnergy(businessPage)
         print(energy)
+        getMoney(businessPage)
+        getDrunkness(businessPage)
         decideToGetDrunk = shouldYouGetDrunk(energy, businessPage)
-        print(decideToGetDrunk)
 
-        if decideToGetDrunk:
+        if decideToGetDrunk and businessPage.find('Jelenleg az igazak álmát alszod') > -1:
+            wakeUp()
             getDrunk()
 
-        if businessPage.find('A fogdába azok kerülnek, akiknek nem sikerült a Garázdálkodás!') > -1:
+        elif decideToGetDrunk and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
+            getDrunk()
+
+        elif businessPage.find('A fogdába azok kerülnek, akiknek nem sikerült a Garázdálkodás!') > -1:
             print("prison")
             time.sleep(10)
 
-        if businessPage.find('Sajnos elkaptak garázdálkodás közben, 10 percet a fogdán kell töltened') > -1:
-            pring('go to prison')
+        elif businessPage.find('Sajnos elkaptak garázdálkodás közben, 10 percet a fogdán kell töltened') > -1:
+            print('go to prison')
             endCollectProtectionMoney()
 
         elif businessPage.find('A sötét utat választottad: garázdálkodsz!') > -1:
@@ -70,7 +93,6 @@ def protectionMoney():
             endCollectProtectionMoney()
 
         elif energy >= 15 and businessPage.find('A fogdába azok kerülnek, akiknek nem sikerült a Garázdálkodás!') == -1 and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
-            getAffrayPage()
             collectProtectionMoney()
             print("money process started")
             time.sleep(605)
@@ -78,27 +100,31 @@ def protectionMoney():
 
         elif energy >= 15 and businessPage.find('Jelenleg az igazak álmát alszod!') > -1:
             wakeUp()
-            getBusinessPage()
-            getAffrayPage()
             collectProtectionMoney()
             print("woke up and money process started")
             time.sleep(605)
             endCollectProtectionMoney()
 
+        elif (energy == 14 or energy == 13) and businessPage.find('Jelenleg az igazak álmát alszod!') == -1:
+            sleep()
+            print("low energy, go to sleep")
+            time.sleep(30)
+        
+        elif (energy == 14 or energy == 13) and businessPage.find('Jelenleg az igazak álmát alszod!') > -1:
+            print("low energy, sleeping")
+            time.sleep(30)
+
         elif energy >= 10 and businessPage.find('A fogdába azok kerülnek, akiknek nem sikerült a Garázdálkodás!') == -1 and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
-            getAffrayPage()
             robbingCashier()
-            print("money process started")
-            time.sleep(605)
+            print("robbing cashier process started")
+            time.sleep(425)
             endCollectProtectionMoney()
 
         elif energy >= 10 and businessPage.find('Jelenleg az igazak álmát alszod!') > -1:
             wakeUp()
-            getBusinessPage()
-            getAffrayPage()
             robbingCashier()
-            print("woke up and money process started")
-            time.sleep(605)
+            print("woke up and robbing cashier  process started")
+            time.sleep(425)
             endCollectProtectionMoney()
 
         elif energy < 15 and businessPage.find('Jelenleg az igazak álmát alszod!') == -1:

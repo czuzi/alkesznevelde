@@ -31,7 +31,7 @@ start_params = {
 
 robbing_cashier_params = {
     'inc': 'affray',
-    'geta': '3',
+    'geta': '2',
 }
 
 def collectProtectionMoney():
