@@ -46,5 +46,5 @@ def getMainPage():
 def getClinicPage():
     return requests.get('https://alkesznevelde.hu/index.php', params=clinic_params, cookies=cookies, headers=headers)
 
-def getClinicPage():
+def getPubPage():
     return requests.get('https://alkesznevelde.hu/index.php', params=pub_params, cookies=cookies, headers=headers)

@@ -28,10 +28,17 @@ start_params = {
     'inc': 'affray',
     'geta': '3',
 }
+
+robbing_cashier_params = {
+    'inc': 'affray',
+    'geta': '3',
+}
+
 def collectProtectionMoney():
     return requests.get('https://alkesznevelde.hu/index.php', params=start_params, cookies=cookies, headers=start_headers)
 
-
+def robbingCashier():
+    return requests.get('https://alkesznevelde.hu/index.php', params=robbing_cashier_params, cookies=cookies, headers=start_headers)
 
 import requests
 
