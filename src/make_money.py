@@ -66,7 +66,7 @@ def makeMoney():
         getDrunkness(businessPage)
         decideToGetDrunk = shouldYouGetDrunk(energy, businessPage)
 
-        if businessPage.find('A fogdába azok kerülnek, akiknek nem sikerült a Garázdálkodás!') > -1:
+        if businessPage.find(' Jelenleg a Fogdában tartózkodsz gaztettedért!') > -1:
             print("prison")
             time.sleep(10)
 
@@ -82,9 +82,9 @@ def makeMoney():
             print("end process")
             endProcess()
 
-        elif energy >= 15 and businessPage.find('A fogdába azok kerülnek, akiknek nem sikerült a Garázdálkodás!') == -1 and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
+        elif energy >= 15 and businessPage.find(' Jelenleg a Fogdában tartózkodsz gaztettedért!') == -1 and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
             collectProtectionMoney()
-            print("money process started")
+            print("money making process started")
             time.sleep(605)
             endProcess()
 
@@ -104,7 +104,7 @@ def makeMoney():
             print("low energy, sleeping")
             time.sleep(30)
 
-        elif energy >= 10 and businessPage.find('A fogdába azok kerülnek, akiknek nem sikerült a Garázdálkodás!') == -1 and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
+        elif energy >= 10 and businessPage.find(' Jelenleg a Fogdában tartózkodsz gaztettedért!') == -1 and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
             robbingCashier()
             print("robbing cashier process started")
             time.sleep(425)
