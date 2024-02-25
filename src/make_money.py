@@ -11,7 +11,7 @@ from src.end_process import endProcess
 
 
 def shouldYouGetDrunk(energy, businessPage):
-    canYouGetDrunk = businessPage.find(' perc múlva rúghatsz be!') == -1 and businessPage.find('A fogdába azok kerülnek, akiknek nem sikerült a Garázdálkodás!') == -1
+    canYouGetDrunk = businessPage.find(' perc múlva rúghatsz be!') == -1 and businessPage.find(' perc múlva újra ihatsz') == -1 and businessPage.find('A fogdába azok kerülnek, akiknek nem sikerült a Garázdálkodás!') == -1
     if energy < 8 and canYouGetDrunk:
         return True
     else:
