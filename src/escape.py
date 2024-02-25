@@ -2,14 +2,14 @@ import requests
 from src.cookies import cookies
 
 headers = {
-    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-    'Accept-Language': 'en-US,en;q=0.5',
+    'Accept-Language': 'hu-HU,hu;q=0.8,en-US;q=0.5,en;q=0.3',
     # 'Accept-Encoding': 'gzip, deflate, br',
     'DNT': '1',
     'Connection': 'keep-alive',
-    'Referer': 'https://alkesznevelde.hu/index.php?inc=data&msg=hanyas',
-    # 'Cookie': 'PHPSESSID=iq2f2k9ukaaolbmhodhngmcni7',
+    'Referer': 'https://alkesznevelde.hu/index.php?inc=jail',
+    # 'Cookie': 'logoHide=1; PHPSESSID=ds9vhgiosiul0ktluu9fmsmmj0',
     'Upgrade-Insecure-Requests': '1',
     'Sec-Fetch-Dest': 'document',
     'Sec-Fetch-Mode': 'navigate',
@@ -21,10 +21,9 @@ headers = {
 }
 
 params = {
-    'inc': 'data',
-    'action': 'puke',
+    'inc': 'jail',
+    'akcio': 'break',
 }
 
-def puke():
+def escape():
     return requests.get('https://alkesznevelde.hu/index.php', params=params, cookies=cookies, headers=headers)
-
