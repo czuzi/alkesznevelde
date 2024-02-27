@@ -33,6 +33,7 @@ pub_params = {
 business_params = {
     'inc': 'business',
 }
+
 def getBusinessPage():
     return requests.get('https://alkesznevelde.hu/index.php', params=business_params, cookies=cookies, headers=headers)
 
