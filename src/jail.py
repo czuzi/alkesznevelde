@@ -8,32 +8,21 @@ headers = {
     # 'Accept-Encoding': 'gzip, deflate, br',
     'DNT': '1',
     'Connection': 'keep-alive',
-    'Referer': 'https://alkesznevelde.hu/index.php?inc=alcohol&pub=2',
+    'Referer': 'https://alkesznevelde.hu/index.php?inc=jail',
     # 'Cookie': 'PHPSESSID=iq2f2k9ukaaolbmhodhngmcni7',
     'Upgrade-Insecure-Requests': '1',
     'Sec-Fetch-Dest': 'document',
     'Sec-Fetch-Mode': 'navigate',
     'Sec-Fetch-Site': 'same-origin',
-    'Sec-Fetch-User': '?1',
     'Sec-GPC': '1',
+    # Requests doesn't support trailers
+    # 'TE': 'trailers',
 }
 
-palinka_params = {
-    'inc': 'alcohol',
-    'pub': '2',
-    'akcio': 'drink',
-    'drink_id': '2',
+params = {
+    'inc': 'jail',
+    'akcio': 'go',
 }
 
-beer_params = {
-    'inc': 'alcohol',
-    'pub': '2',
-    'akcio': 'drink',
-    'drink_id': '0',
-}
-
-def drinkBeerLeszVigasz():
-    return requests.get('https://alkesznevelde.hu/index.php', params=beer_params, cookies=cookies, headers=headers)
-
-def drinkPalinkaLeszVigasz():
-    return requests.get('https://alkesznevelde.hu/index.php', params=palinka_params, cookies=cookies, headers=headers)
+def getOutOfJail():
+    return requests.get('https://alkesznevelde.hu/index.php', params=params, cookies=cookies, headers=headers)

@@ -8,7 +8,7 @@ headers = {
     # 'Accept-Encoding': 'gzip, deflate, br',
     'DNT': '1',
     'Connection': 'keep-alive',
-    'Referer': 'https://alkesznevelde.hu/index.php?inc=alcohol&pub=2',
+    'Referer': 'https://alkesznevelde.hu/index.php?inc=clan_pub',
     # 'Cookie': 'PHPSESSID=iq2f2k9ukaaolbmhodhngmcni7',
     'Upgrade-Insecure-Requests': '1',
     'Sec-Fetch-Dest': 'document',
@@ -18,22 +18,11 @@ headers = {
     'Sec-GPC': '1',
 }
 
-palinka_params = {
-    'inc': 'alcohol',
-    'pub': '2',
-    'akcio': 'drink',
-    'drink_id': '2',
-}
-
-beer_params = {
-    'inc': 'alcohol',
-    'pub': '2',
+params = {
+    'inc': 'clan_pub',
     'akcio': 'drink',
     'drink_id': '0',
 }
 
-def drinkBeerLeszVigasz():
-    return requests.get('https://alkesznevelde.hu/index.php', params=beer_params, cookies=cookies, headers=headers)
-
-def drinkPalinkaLeszVigasz():
-    return requests.get('https://alkesznevelde.hu/index.php', params=palinka_params, cookies=cookies, headers=headers)
+def drinkBeerClanPub():
+    return requests.get('https://alkesznevelde.hu/index.php', params=params, cookies=cookies, headers=headers)

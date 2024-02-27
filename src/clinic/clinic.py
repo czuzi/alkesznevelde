@@ -25,9 +25,8 @@ params = {
     'action': '3',
 }
 
-data = {
-    'addictionNum': '8',
-}
-
-def getSoberInClinic():
+def getSoberInClinic(addictionInput):
+    data = {
+        'addictionNum': addictionInput,
+    }
     return requests.post('https://alkesznevelde.hu/index.php', params=params, cookies=cookies, headers=headers, data=data)
