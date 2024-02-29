@@ -8,7 +8,7 @@ headers = {
     # 'Accept-Encoding': 'gzip, deflate, br',
     'DNT': '1',
     'Connection': 'keep-alive',
-    'Referer': 'https://alkesznevelde.hu/index.php?inc=garden',
+    'Referer': 'https://alkesznevelde.hu/index.php?inc=business',
     # 'Cookie': 'PHPSESSID=iq2f2k9ukaaolbmhodhngmcni7',
     'Upgrade-Insecure-Requests': '1',
     'Sec-Fetch-Dest': 'document',
@@ -16,13 +16,14 @@ headers = {
     'Sec-Fetch-Site': 'same-origin',
     'Sec-Fetch-User': '?1',
     'Sec-GPC': '1',
+    # Requests doesn't support trailers
+    # 'TE': 'trailers',
 }
 
-harvest_peach_params = {
-    'inc': 'garden',
-    'action': 'collect',
-    'id': '2',
+params = {
+    'inc': 'begging',
 }
 
-def harvestPeaches():
-    return requests.get('https://alkesznevelde.hu/index.php', params=harvest_peach_params, cookies=cookies, headers=headers)
+def getBeggingPage():
+    return requests.get('https://alkesznevelde.hu/index.php', params=params, cookies=cookies, headers=headers)
+

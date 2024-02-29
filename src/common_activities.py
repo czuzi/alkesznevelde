@@ -9,12 +9,11 @@ from src.consume import eatSandwichActivity
 
 def getNumberOfSandwiches():
     mainPage = getMainPage().text
-    sandwichesStartString = ('+5 energia<br>-10 részegség<br>+5 életerõ</td>'
-        '<td style="text-align:left; width:15%;border: 1px double gray; text-align:center; font-weight:bold">')
-    sandwichesStartIndex = mainPage.find(sandwichesStartString) + len(sandwichesStartString)
-    sandwichesEndIndex = sandwichesStartIndex + 1
-    if mainPage[sandwichesStartIndex:sandwichesEndIndex] == ' ':
-        sandwichesEndIndex = sandwichesStartIndex + 2
+    sandwichEndString = ' db</td>'
+    sandwichesEndIndex = mainPage.find(sandwichEndString)
+    sandwichesStartIndex = sandwichesEndIndex - 2
+    if mainPage[sandwichesStartIndex:sandwichesEndIndex-1] == '>':
+        sandwichesStartIndex = sandwichesEndIndex - 1
     sandwiches = mainPage[sandwichesStartIndex:sandwichesEndIndex]
     print(sandwiches)
     return sandwiches
@@ -22,8 +21,8 @@ def getNumberOfSandwiches():
 def eatSandwich():
     eatSandwichActivity()
 
-def shouldYouGetDrunk(energy, businessPage, maximumEnergy):
-    canYouGetDrunk = businessPage.find('perc múlva rúghatsz be!') == -1 and businessPage.find('percen belül újra ihatsz!') == -1 and businessPage.find('Jelenleg dolgozol!') == -1
+def shouldYouGetDrunk(energy, businessPage, maximumEnergy, currentActivity):
+    canYouGetDrunk = businessPage.find('perc múlva rúghatsz be!') == -1 and businessPage.find('percen belül újra ihatsz!') == -1 and businessPage.find(currentActivity) == -1
     if energy <= maximumEnergy and canYouGetDrunk:
         return True
     else:
