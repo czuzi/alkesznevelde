@@ -34,6 +34,26 @@ business_params = {
     'inc': 'business',
 }
 
+factory_params = {
+    'inc': 'factory',
+}
+
+garden_params = {
+    'inc': 'garden',
+}
+
+drink_own_beer_params = {
+    'inc': 'data',
+    'action': 'fac_drink',
+    'id': '0',
+}
+
+drink_own_palinka_params = {
+    'inc': 'data',
+    'action': 'fac_drink',
+    'id': '2',
+}
+
 def getBusinessPage():
     return requests.get('https://alkesznevelde.hu/index.php', params=business_params, cookies=cookies, headers=headers)
 
@@ -45,3 +65,15 @@ def getClinicPage():
 
 def getPubPage():
     return requests.get('https://alkesznevelde.hu/index.php', params=pub_params, cookies=cookies, headers=headers)
+
+def getFactoryPage():
+    return requests.get('https://alkesznevelde.hu/index.php', params=factory_params, cookies=cookies, headers=headers)
+
+def getGardenPage():
+    return requests.get('https://alkesznevelde.hu/index.php', params=garden_params, cookies=cookies, headers=headers)
+
+def drinkOwnBeer():
+    return requests.get('https://alkesznevelde.hu/index.php', params=drink_own_beer_params, cookies=cookies, headers=headers)
+
+def drinkOwnPalinka():
+    return requests.get('https://alkesznevelde.hu/index.php', params=drink_own_palinka_params, cookies=cookies, headers=headers)

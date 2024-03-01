@@ -1,11 +1,14 @@
 import time
 from src.pub.leszvigasz_page import goToLeszVigasz
 from src.pub.leszvigasz.drink import drinkPalinkaLeszVigasz, drinkBeerLeszVigasz
+from src.pub.clan_pub.drink import drinkBeerClanPub
 from src.clinic.clinic import getSoberInClinic
 from src.puke import puke
 from src.sleep import sleep, wakeUp
 from src.main_page import *
 from src.consume import eatSandwichActivity
+from src.garden.harvest import harvest
+from src.factory.factory import getBeersAndStartNewBrew, getPalinkasAndStartNewBrew
 
 def getNumberOfSandwiches():
     mainPage = getMainPage().text
@@ -35,14 +38,15 @@ def getEnergy(businessPage):
 
 def getDrunk():
     getSober()
-    getPubPage()
-    goToLeszVigasz()
-    for x in range(6):
-        drinkPalinkaLeszVigasz()
-        print('palinka')
+    getMainPage()
     for x in range(2):
-        drinkBeerLeszVigasz()
-        print('sor')
+        drinkOwnPalinka()
+        print('own palinka')
+    for x in range(6):
+        drinkOwnBeer()
+        print('own sor')
+    drinkBeerClanPub()
+    print('clan beer')
     for x in range(4):
         puke()
         print('puke')
@@ -89,3 +93,12 @@ def getMoneyMade(businessPage):
     moneyMadeEndIndex = businessPage.find(moneyMadeEndString)
     moneyMade = businessPage[moneyMadeStartIndex:moneyMadeEndIndex]
     print(moneyMade)
+
+def harvestAll(businessPage):
+    if businessPage.find('color:#00FF00">Kert') > -1:
+        harvest()
+
+def collectAndBrew(businessPage):
+    if businessPage.find('color:#00FF00">Szesz') > -1:
+        getBeersAndStartNewBrew()
+        getPalinkasAndStartNewBrew()

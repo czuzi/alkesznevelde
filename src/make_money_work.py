@@ -8,7 +8,9 @@ from src.business.begging.begging_activities import beggingOnWallStreet
 from src.end_process import endProcess
 from src.jail import getOutOfJail
 from src.common_activities import *
+from src.factory.factory import *
 
+# color:#00FF00">Kert
 def makeMoneyWork():
     while True:
         businessPage = getBusinessPage().text
@@ -17,6 +19,10 @@ def makeMoneyWork():
         money = getMoney(businessPage)
         getDrunkness(businessPage)
         print(getAddiction())
+
+        harvestAll(businessPage)
+        # collectAndBrew(businessPage)
+        
         decideToGetDrunk = shouldYouGetDrunk(energy, businessPage, 8, 'Jelenleg dolgozol!')
 
         if businessPage.find('Rájöttél, hogy pénzt keresni kétkezi munkával is lehet!') > -1 or businessPage.find('A koldusok útját választottad: tarhálsz!') > -1:
