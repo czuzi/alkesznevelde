@@ -39,10 +39,10 @@ def getEnergy(businessPage):
 def getDrunk():
     getSober()
     getMainPage()
-    for x in range(2):
+    for x in range(3):
         drinkOwnPalinka()
         print('own palinka')
-    for x in range(6):
+    for x in range(4):
         drinkOwnBeer()
         print('own sor')
     drinkBeerClanPub()
@@ -55,9 +55,9 @@ def getAddiction():
     mainPage = getMainPage().text
     addictionStartString = 'részegség minden piából</td><td style="border: 1px double gray;">'
     addictionStartIndex = mainPage.find(addictionStartString) + len(addictionStartString)
-    addictionEndIndex = addictionStartIndex + 2
-    if mainPage[addictionStartIndex:addictionEndIndex] == '<':
-        addictionEndIndex = addictionStartIndex + 3
+    addictionEndIndex = addictionStartIndex + 3
+    if mainPage[addictionStartIndex+2:addictionEndIndex] == '<':
+        addictionEndIndex = addictionStartIndex + 2
     addiction = mainPage[addictionStartIndex+1:addictionEndIndex]
     return addiction
 

@@ -21,7 +21,7 @@ def makeMoneyWork():
         print(getAddiction())
 
         harvestAll(businessPage)
-        # collectAndBrew(businessPage)
+        collectAndBrew(businessPage)
         
         decideToGetDrunk = shouldYouGetDrunk(energy, businessPage, 8, 'Jelenleg dolgozol!')
 
@@ -32,7 +32,6 @@ def makeMoneyWork():
         elif businessPage.find(' kerestél kemény munkával!') > -1 or businessPage.find('-t tarháltál össze!') > -1:
             print("end process")
             endProcess()
-            time.sleep(30   )
 
         elif energy >= 13 and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
             getBusinessPage()
