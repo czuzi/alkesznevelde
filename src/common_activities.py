@@ -63,7 +63,6 @@ def getAddiction():
 
 def getSober():
     addiction = getAddiction()
-    time.sleep(5)
     if int(addiction) > 0:
         getSoberInClinic(addiction)
         print('new addiction')
