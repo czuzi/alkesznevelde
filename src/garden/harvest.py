@@ -8,8 +8,8 @@ def harvest():
         harvesthops()
         print('hops harvested')
 
-    # if garden.find('<a href="index.php?inc=garden&action=collect&id=1">') > -1:
-    #     harvestGrapes()
+    if garden.find('<a href="index.php?inc=garden&action=collect&id=1">') > -1:
+        harvestGrapes()
 
     if garden.find('<a href="index.php?inc=garden&action=collect&id=2">') > -1:
         harvestPeaches()

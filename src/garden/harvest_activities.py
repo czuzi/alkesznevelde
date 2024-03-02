@@ -24,11 +24,11 @@ harvest_hop_params = {
     'id': '0',
 }
 
-# harvest_grapes_params = {
-#     'inc': 'garden',
-#     'action': 'collect',
-#     'id': '0',
-# }
+harvest_grapes_params = {
+    'inc': 'garden',
+    'action': 'collect',
+    'id': '0',
+}
 
 harvest_peach_params = {
     'inc': 'garden',
@@ -45,8 +45,8 @@ harvest_potato_params = {
 def harvesthops():
     return requests.get('https://alkesznevelde.hu/index.php', params=harvest_hop_params, cookies=cookies, headers=headers)
 
-# def harvestGrapes():
-#     return requests.get('https://alkesznevelde.hu/index.php', params=harvest_grapes_params, cookies=cookies, headers=headers)
+def harvestGrapes():
+    return requests.get('https://alkesznevelde.hu/index.php', params=harvest_grapes_params, cookies=cookies, headers=headers)
 
 def harvestPeaches():
     return requests.get('https://alkesznevelde.hu/index.php', params=harvest_peach_params, cookies=cookies, headers=headers)
