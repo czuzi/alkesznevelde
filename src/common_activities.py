@@ -39,17 +39,39 @@ def getEnergy(businessPage):
 def getDrunk():
     getSober()
     getMainPage()
-    for x in range(3):
+    for x in range(2):
         drinkOwnPalinka()
         print('own palinka')
-    for x in range(4):
+    for x in range(2):
         drinkOwnBeer()
         print('own sor')
-    drinkBeerClanPub()
-    print('clan beer')
+    getSober()
+    for x in range(2):
+        drinkOwnBeer()
+        print('own sor')
+    for x in range(2):
+        drinkBeerClanPub()
+        print('clan beer')
     for x in range(4):
         puke()
         print('puke')
+
+def getDrunkForVandalism():
+    getSober()
+    getMainPage()
+    for x in range(2):
+        drinkOwnPalinka()
+        print('own palinka')
+    for x in range(2):
+        drinkOwnBeer()
+        print('own sor')
+    getSober()
+    for x in range(2):
+        drinkOwnBeer()
+        print('own sor')
+    for x in range(2):
+        drinkBeerClanPub()
+        print('clan beer')
 
 def getAddiction():
     mainPage = getMainPage().text
