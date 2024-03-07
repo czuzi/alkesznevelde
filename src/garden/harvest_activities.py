@@ -27,7 +27,7 @@ harvest_hop_params = {
 harvest_grapes_params = {
     'inc': 'garden',
     'action': 'collect',
-    'id': '0',
+    'id': '1',
 }
 
 harvest_peach_params = {
