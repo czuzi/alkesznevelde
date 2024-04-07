@@ -9,7 +9,7 @@ end_headers = {
     'DNT': '1',
     'Connection': 'keep-alive',
     'Referer': 'https://alkesznevelde.hu/index.php?inc=business',
-    # 'Cookie': 'logoHide=1; PHPSESSID=ds9vhgiosiul0ktluu9fmsmmj0',
+    
     'Upgrade-Insecure-Requests': '1',
     'Sec-Fetch-Dest': 'document',
     'Sec-Fetch-Mode': 'navigate',

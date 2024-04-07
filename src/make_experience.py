@@ -1,4 +1,5 @@
 import time
+from src.get_common_data import getAddiction, getDrunkness, getEnergy, getMoney
 from src.main_page import *
 from src.end_process import endProcess
 from src.jail import getOutOfJail
@@ -10,15 +11,12 @@ def makeExpirience():
     while True:
         businessPage = getBusinessPage().text
         energy = getEnergy(businessPage)
-        print(energy)
-        getMoney(businessPage)
-        getDrunkness(businessPage)
-        print(getAddiction())
+        drunkness = getDrunkness(businessPage)
 
-        harvestAll(businessPage)
-        collectAndBrew(businessPage)
+        printCommonInfo(businessPage)
+        takeCareUtils(businessPage)
 
-        decideToGetDrunk = shouldYouGetDrunk(1, businessPage, 14, 'Jelenleg vandálkodsz!')
+        decideToGetDrunk = shouldYouGetDrunkForVandalism(businessPage, 'Jelenleg vandálkodsz!')
         getOutOfJail()
 
         if decideToGetDrunk and businessPage.find('Jelenleg az igazak álmát alszod') > -1:
@@ -40,7 +38,7 @@ def makeExpirience():
             print("already making money")
             time.sleep(15)
 
-        elif energy >= 14 and businessPage.find('Jelenleg a Fogdában tartózkodsz gaztettedért!') == -1 and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
+        elif int(drunkness) >= 30 and energy >= 14 and businessPage.find('Jelenleg a Fogdában tartózkodsz gaztettedért!') == -1 and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
             getBusinessPage()
             getVandalismPage()
             forestVandalism()
@@ -48,7 +46,7 @@ def makeExpirience():
             time.sleep(905)
             endProcess()
 
-        elif energy >= 14 and businessPage.find('Jelenleg az igazak álmát alszod!') > -1:
+        elif int(drunkness) >= 30 and energy >= 14 and businessPage.find('Jelenleg az igazak álmát alszod!') > -1:
             wakeUp()
             getBusinessPage()
             getVandalismPage()

@@ -9,7 +9,7 @@ headers = {
     'DNT': '1',
     'Connection': 'keep-alive',
     'Referer': 'https://alkesznevelde.hu/index.php',
-    # 'Cookie': 'logoHide=1; PHPSESSID=ds9vhgiosiul0ktluu9fmsmmj0',
+    
     'Upgrade-Insecure-Requests': '1',
     'Sec-Fetch-Dest': 'document',
     'Sec-Fetch-Mode': 'navigate',
@@ -42,6 +42,18 @@ garden_params = {
     'inc': 'garden',
 }
 
+pet_params = {
+    'inc': 'my_pets',
+}
+
+collection_params = {
+    'inc': 'collection',
+}
+
+house_params = {
+    'inc': 'house',
+}
+
 drink_own_beer_params = {
     'inc': 'data',
     'action': 'fac_drink',
@@ -71,6 +83,15 @@ def getFactoryPage():
 
 def getGardenPage():
     return requests.get('https://alkesznevelde.hu/index.php', params=garden_params, cookies=cookies, headers=headers)
+
+def getMyPetsPage():
+    return requests.get('https://alkesznevelde.hu/index.php', params=pet_params, cookies=cookies, headers=headers)
+
+def getCollectionPage():
+    return requests.get('https://alkesznevelde.hu/index.php', params=collection_params, cookies=cookies, headers=headers)
+
+def getHousePage():
+    return requests.get('https://alkesznevelde.hu/index.php', params=house_params, cookies=cookies, headers=headers)
 
 def drinkOwnBeer():
     return requests.get('https://alkesznevelde.hu/index.php', params=drink_own_beer_params, cookies=cookies, headers=headers)

@@ -11,10 +11,8 @@ def makeMoneyAffray():
     while True:
         businessPage = getBusinessPage().text
         energy = getEnergy(businessPage)
-        print(energy)
-        getMoney(businessPage)
-        getDrunkness(businessPage)
-        print(getAddiction())
+        printCommonInfo(businessPage)
+        takeCareUtils(businessPage)
         decideToGetDrunk = shouldYouGetDrunk(energy, businessPage, 7)
         getOutOfJail()
 

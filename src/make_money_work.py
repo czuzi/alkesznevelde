@@ -9,19 +9,16 @@ from src.end_process import endProcess
 from src.jail import getOutOfJail
 from src.common_activities import *
 from src.factory.factory import *
+from src.get_common_data import *
 
 # color:#00FF00">Kert
 def makeMoneyWork():
     while True:
         businessPage = getBusinessPage().text
         energy = getEnergy(businessPage)
-        print(energy)
-        money = getMoney(businessPage)
-        getDrunkness(businessPage)
-        print(getAddiction())
 
-        harvestAll(businessPage)
-        collectAndBrew(businessPage)
+        printCommonInfo(businessPage)
+        takeCareUtils(businessPage)
         
         decideToGetDrunk = shouldYouGetDrunk(energy, businessPage, 8, 'Jelenleg dolgozol!')
 
@@ -77,12 +74,12 @@ def makeMoneyWork():
             time.sleep(422)
             endProcess()
 
-        elif decideToGetDrunk and businessPage.find('Jelenleg az igazak álmát alszod') > -1 and int(money) > 130:
+        elif decideToGetDrunk and businessPage.find('Jelenleg az igazak álmát alszod') > -1:
             print('wake up and drink')
             wakeUp()
             getDrunk()
 
-        elif decideToGetDrunk and businessPage.find('Jelenleg az igazak álmát alszod') == -1 and int(money) > 130:
+        elif decideToGetDrunk and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
             print('get drunk')
             getDrunk()
 
