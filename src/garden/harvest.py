@@ -10,6 +10,7 @@ def harvest():
 
     if garden.find('<a href="index.php?inc=garden&action=collect&id=1">') > -1:
         harvestGrapes()
+        print('grapes harvested')
 
     if garden.find('<a href="index.php?inc=garden&action=collect&id=2">') > -1:
         harvestPeaches()

@@ -37,14 +37,24 @@ def deposit(amount):
         'betesz': 'Beteszek',
         'betesz_m': amount,
     }
-    return requests.post('https://alkesznevelde.hu/index.php', params=deposit_params, cookies=cookies, headers=headers, data=data)
+
+    if int(amount) < 1:
+        print("the minimum amount to deposit is 1 dollar")
+    else:
+        print(f"deposited {amount} dollars")
+        return requests.post('https://alkesznevelde.hu/index.php', params=deposit_params, cookies=cookies, headers=headers, data=data)
 
 def withdraw(amount):
     data = {
         'kivesz': 'Kiveszek',
         'kivesz_m': amount,
     }
-    return requests.post('https://alkesznevelde.hu/index.php', params=withdraw_params, cookies=cookies, headers=headers, data=data)
+
+    if int(amount) < 1:
+        print("the minimum amount to withdraw is 1 dollar")
+    else:
+        print(f"withdrawn {amount} dollars")
+        return requests.post('https://alkesznevelde.hu/index.php', params=withdraw_params, cookies=cookies, headers=headers, data=data)
 
 def getSafeMoneyAmount():
     page = getHousePage().text

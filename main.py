@@ -4,4 +4,4 @@ from src.make_experience import makeExpirience
 from src.make_money_collect_steel import makeMoneyCollectingSteel
 from src.garden.get_number_of_plants import *
 
-makeMoneyWork()
+makeMoneyCollectingSteel()

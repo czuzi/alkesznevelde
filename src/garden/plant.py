@@ -56,10 +56,6 @@ def plant():
         canPlant = numberOfAllPlants < gardenSize
         print(f"{amountToPlant} number of potatoes planted")
 
-def addNewlyPlantedPlants(numberOfHops, numberOfAllPlants, amountToPlant):
-    numberOfHops += amountToPlant
-    numberOfAllPlants += amountToPlant
-
 def calcAmountAndWithdrawCost(plantCost, numberOfNewPlants):
     amountToPlant = numberOfNewPlants
     moneyInSafe = getSafeMoneyAmount()

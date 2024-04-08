@@ -2,6 +2,8 @@ from src.main_page import getFactoryPage
 from src.factory.factory_pages import *
 from src.factory.beer import getMadeBeer, startMakeBeer
 from src.factory.palinka import getMadePalinka, startMakePalinka
+from src.factory.wine import getMadeWine, startMakeWine
+from src.factory.vodka import getMadeVodka, startMakeVodka
 
 def setAmountToMake(page):
     amountStartString = 'selected="selected">'
@@ -30,3 +32,21 @@ def getPalinkasAndStartNewBrew():
         palinkaPage = getPalinkaPage().text
         amount = setAmountToMake(palinkaPage)
         startMakePalinka(amount)
+
+def getWinesAndStartNewBrew():
+    getFactoryPage()
+    winePage = getWinePage().text
+    if winePage.find('adag bor sikeresen elkészült!'):
+        getMadeWine()
+        winePage = getWinePage().text
+        amount = setAmountToMake(winePage)
+        startMakeWine(amount)
+
+def getVodkasAndStartNewBrew():
+    getFactoryPage()
+    vodkaPage = getVodkaPage().text
+    if vodkaPage.find('adag vodka sikeresen elkészült!'):
+        getMadeVodka()
+        vodkaPage = getVodkaPage().text
+        amount = setAmountToMake(vodkaPage)
+        startMakeVodka(amount)

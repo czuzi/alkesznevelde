@@ -10,7 +10,7 @@ from src.main_page import *
 from src.consume import eatSandwichActivity
 from src.garden.harvest import harvest
 from src.garden.plant import plant
-from src.factory.factory import getBeersAndStartNewBrew, getPalinkasAndStartNewBrew
+from src.factory.factory import *
 from variables import petIds
 from src.pet.get_pet_page import getPetPageByPetId
 from src.pet.pet_activities import *
@@ -98,6 +98,9 @@ def collectAndBrew(businessPage):
     if businessPage.find('color:#00FF00">Szesz') > -1:
         getBeersAndStartNewBrew()
         getPalinkasAndStartNewBrew()
+        getWinesAndStartNewBrew()
+        getVodkasAndStartNewBrew()
+        
 
 def takeCarePets():
     getMyPetsPage()
@@ -111,8 +114,10 @@ def takeCarePets():
             print(f"fed pet {petId}")
 
 def takeCareUtils(businessPage):
+    money = int(getMoney(businessPage))
     plant()
     harvestAll(businessPage)
     collectAndBrew(businessPage)
     takeCarePets()
-    deposit(str(int(getMoney(businessPage)) - 200))
+    if money > 200:
+        deposit(str(money - 200))
