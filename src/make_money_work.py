@@ -17,11 +17,8 @@ def makeMoneyWork():
         businessPage = getBusinessPage().text
         energy = getEnergy(businessPage)
 
-        print("before taking care of utils:")
         printCommonInfo(businessPage)
         takeCareUtils(businessPage)
-        print("after taking care of utils:")
-        printCommonInfo(businessPage)
         
         decideToGetDrunk = shouldYouGetDrunk(energy, businessPage, 8, 'Jelenleg dolgozol!')
 

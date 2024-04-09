@@ -78,11 +78,23 @@ def getNumberOfOwnPalinkas():
     subEndIndex = substring.find(subEndString)
     return substring[subStartIndex:subEndIndex]
 
+def getPotatoes():
+    page = getMainPage().text
+    startString = '<td style="text-align:left; width:15%;border: 1px double gray; font-weight:bold; text-align:center">Krumpli</td>'
+    startIndex = page.find(startString) + len(startString)
+    endString = '<a href="index.php?inc=data&action=use_potato"  onclick="return usePotatoNum()" >Használom</a>'
+    endIndex = page.find(endString)
+    substring = page[startIndex:endIndex]
+    subStartString = ' font-weight:bold">'
+    subStartIndex = substring.find(subStartString) + len(subStartString)
+    subEndString = ' db</td>'
+    subEndIndex = substring.find(subEndString)
+    return substring[subStartIndex:subEndIndex]
+
 def printCommonInfo(businessPage):
     print(f"energy: {getEnergy(businessPage)}" )
     print(f"drunkness: {getDrunkness(businessPage)}" )
     print(f"money: {getMoney(businessPage)}" )
-    print(f"money in the safe: {getSafeMoneyAmount()}")
 
 # def isDrunk():
 #     mainPage = getMainPage().text

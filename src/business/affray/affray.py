@@ -30,9 +30,16 @@ robbing_cashier_params = {
     'geta': '2',
 }
 
+gta_params = {
+    'inc': 'affray',
+    'geta': '6',
+}
+
 def collectProtectionMoney():
     return requests.get('https://alkesznevelde.hu/index.php', params=collect_protection_money_params, cookies=cookies, headers=start_headers)
 
 def robbingCashier():
     return requests.get('https://alkesznevelde.hu/index.php', params=robbing_cashier_params, cookies=cookies, headers=start_headers)
 
+def gta():
+    return requests.get('https://alkesznevelde.hu/index.php', params=gta_params, cookies=cookies, headers=start_headers)

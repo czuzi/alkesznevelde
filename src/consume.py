@@ -26,5 +26,14 @@ sandwich_params = {
     'use_id': '0',
 }
 
+
 def eatSandwichActivity():
     return requests.get('https://alkesznevelde.hu/index.php', params=sandwich_params, cookies=cookies, headers=headers)
+
+def eatPotatoes(amount):
+    potato_params = {
+        'inc': 'data',
+        'action': 'use_potato',
+        'num': amount,
+    }
+    return requests.get('https://alkesznevelde.hu/index.php', params=potato_params, cookies=cookies, headers=headers)

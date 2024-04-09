@@ -33,16 +33,24 @@ withdraw_params = {
 
 
 def deposit(amount):
-    data = {
-        'betesz': 'Beteszek',
-        'betesz_m': amount,
-    }
+    moneyInSafe = int(getSafeMoneyAmount())
+    safeCapacity = int(getSafeCapacity())
+    capacityLeft = safeCapacity - moneyInSafe
 
     if int(amount) < 1:
         print("the minimum amount to deposit is 1 dollar")
+    elif moneyInSafe == safeCapacity:
+        print("the safe is full")
     else:
+        if amount > capacityLeft:
+            data = {
+                'betesz': 'Beteszek',
+                'betesz_m': capacityLeft,
+            }
+            print(f"the safe is full. the leftover is {amount - capacityLeft}")
+            return requests.post('https://alkesznevelde.hu/index.php', params=deposit_params, cookies=cookies, headers=headers, data=data)
+            
         print(f"deposited {amount} dollars")
-        return requests.post('https://alkesznevelde.hu/index.php', params=deposit_params, cookies=cookies, headers=headers, data=data)
 
 def withdraw(amount):
     data = {
@@ -57,6 +65,16 @@ def withdraw(amount):
         return requests.post('https://alkesznevelde.hu/index.php', params=withdraw_params, cookies=cookies, headers=headers, data=data)
 
 def getSafeMoneyAmount():
+    page = getHousePage().text
+    startString = 'Széfed: '
+    startIndex = page.find(startString) + len(startString)
+    endIndex = len(page)
+    substring = page[startIndex:endIndex]
+    subEndString = ' / '
+    subEndIndex = substring.find(subEndString)
+    return substring[0:subEndIndex]
+
+def getSafeCapacity():
     page = getHousePage().text
     startString = 'Széfed: '
     startIndex = page.find(startString) + len(startString)

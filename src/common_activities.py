@@ -23,12 +23,10 @@ def shouldYouGetDrunk(energy, businessPage, maximumEnergy, currentActivity):
     money = int(getMoney(businessPage))
     canYouGetDrunk = businessPage.find('perc múlva rúghatsz be!') == -1 and businessPage.find('percen belül újra ihatsz!') == -1 and businessPage.find(currentActivity) == -1 and money >= 150
     return energy <= maximumEnergy and canYouGetDrunk
-
     
 def shouldYouGetDrunkForVandalism(businessPage, currentActivity):
     money = int(getMoney(businessPage))
     return businessPage.find('perc múlva rúghatsz be!') == -1 and businessPage.find('percen belül újra ihatsz!') == -1 and businessPage.find(currentActivity) == -1 and money >= 150
-
 
 def getDrunk():
 
