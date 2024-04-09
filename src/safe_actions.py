@@ -42,15 +42,21 @@ def deposit(amount):
     elif moneyInSafe == safeCapacity:
         print("the safe is full")
     else:
-        if amount > capacityLeft:
+        if int(amount) > capacityLeft:
             data = {
                 'betesz': 'Beteszek',
                 'betesz_m': capacityLeft,
             }
-            print(f"the safe is full. the leftover is {amount - capacityLeft}")
+            print(f"could not deposit the full amount. deposited {capacityLeft} dollars. the leftover is {int(amount) - capacityLeft + 200}")
             return requests.post('https://alkesznevelde.hu/index.php', params=deposit_params, cookies=cookies, headers=headers, data=data)
-            
-        print(f"deposited {amount} dollars")
+        else:
+            data = {
+                'betesz': 'Beteszek',
+                'betesz_m': amount,
+            }
+            print(f"deposited {amount} dollars")
+            return requests.post('https://alkesznevelde.hu/index.php', params=deposit_params, cookies=cookies, headers=headers, data=data)
+        
 
 def withdraw(amount):
     data = {
@@ -80,6 +86,8 @@ def getSafeCapacity():
     startIndex = page.find(startString) + len(startString)
     endIndex = len(page)
     substring = page[startIndex:endIndex]
-    subEndString = ' / '
+    subStartString = ' / '
+    subStartIndex = substring.find(subStartString) + len(subStartString)
+    subEndString = ' $<br />'
     subEndIndex = substring.find(subEndString)
-    return substring[0:subEndIndex]
+    return substring[subStartIndex:subEndIndex]
