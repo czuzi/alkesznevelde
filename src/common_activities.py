@@ -21,12 +21,12 @@ def eatSandwich():
 
 def shouldYouGetDrunk(energy, businessPage, maximumEnergy, currentActivity):
     money = int(getMoney(businessPage))
-    canYouGetDrunk = businessPage.find('perc múlva rúghatsz be!') == -1 and businessPage.find('percen belül újra ihatsz!') == -1 and businessPage.find(currentActivity) == -1 and money >= 150
+    canYouGetDrunk = businessPage.find('perc múlva rúghatsz be!') == -1 and businessPage.find('percen belül újra ihatsz!') == -1 and businessPage.find(currentActivity) == -1 and money >= 50
     return energy <= maximumEnergy and canYouGetDrunk
     
 def shouldYouGetDrunkForVandalism(businessPage, currentActivity):
     money = int(getMoney(businessPage))
-    return businessPage.find('perc múlva rúghatsz be!') == -1 and businessPage.find('percen belül újra ihatsz!') == -1 and businessPage.find(currentActivity) == -1 and money >= 150
+    return businessPage.find('perc múlva rúghatsz be!') == -1 and businessPage.find('percen belül újra ihatsz!') == -1 and businessPage.find(currentActivity) == -1 and money >= 50
 
 def getDrunk():
 
@@ -102,14 +102,15 @@ def collectAndBrew(businessPage):
 
 def takeCarePets():
     getMyPetsPage()
-    for petId in petIds:
-        currentPetPage = getPetPageByPetId(petId).text
-        if currentPetPage.find('&action=game">') > -1:
-            playWithPetByPetId(petId)
-            print(f"played with pet {petId}")
-        if currentPetPage.find('&action=food">') > -1:
-            feedPetByPetId(petId)
-            print(f"fed pet {petId}")
+    if len(petIds) > 0:
+        for petId in petIds:
+            currentPetPage = getPetPageByPetId(petId).text
+            if currentPetPage.find('&action=game">') > -1:
+                playWithPetByPetId(petId)
+                print(f"played with pet {petId}")
+            if currentPetPage.find('&action=food">') > -1:
+                feedPetByPetId(petId)
+                print(f"fed pet {petId}")
 
 def takeCareUtils(businessPage):
     money = int(getMoney(businessPage))
@@ -117,5 +118,5 @@ def takeCareUtils(businessPage):
     harvestAll(businessPage)
     collectAndBrew(businessPage)
     takeCarePets()
-    if money > 200:
-        deposit(str(money - 200))
+    if money > 300:
+        deposit(str(money - 300))

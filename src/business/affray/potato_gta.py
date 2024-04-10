@@ -14,7 +14,7 @@ def potatoGta():
         businessPage = getBusinessPage().text
         energy = getEnergy(businessPage)
         potatoes = int(getPotatoes())
-        potatoesNeed = 15 - energy
+        potatoesNeedToEat = 15 - energy
         printCommonInfo(businessPage)
         takeCareUtils(businessPage)
         decideToGetDrunk = shouldYouGetDrunk(energy, businessPage, 15, 'A sötét utat választottad: garázdálkodsz!')
@@ -59,14 +59,14 @@ def potatoGta():
             time.sleep(302)
             endProcess()
 
-        elif energy < 15 and potatoes > potatoesNeed and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
-            eatPotatoes(str(potatoesNeed))
-            print(f"{potatoesNeed} potatoes have eaten")
+        elif energy < 15 and potatoes >= potatoesNeedToEat and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
+            eatPotatoes(str(potatoesNeedToEat))
+            print(f"{potatoesNeedToEat} potatoes have eaten")
 
-        elif energy < 15 and potatoes > potatoesNeed and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
+        elif energy < 15 and potatoes >= potatoesNeedToEat and businessPage.find('Jelenleg az igazak álmát alszod') == -1:
             wakeUp()
-            eatPotatoes(str(potatoesNeed))
-            print(f"woke up and {potatoesNeed} potatoes have eaten")
+            eatPotatoes(str(potatoesNeedToEat))
+            print(f"woke up and {potatoesNeedToEat} potatoes have eaten")
 
         elif energy < 15 and businessPage.find('Jelenleg az igazak álmát alszod!') == -1:
             getMainPage()
