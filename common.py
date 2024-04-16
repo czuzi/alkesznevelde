@@ -1,0 +1,3 @@
+from src.common_activities_loop import commonActivitiesLoop
+
+commonActivitiesLoop()

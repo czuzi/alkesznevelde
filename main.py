@@ -4,4 +4,4 @@ from src.make_experience import makeExpirience
 from src.make_money_collect_steel import makeMoneyCollectingSteel
 from src.business.affray.potato_gta import potatoGta
 
-potatoGta()
+makeExpirience()

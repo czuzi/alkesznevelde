@@ -1,11 +1,7 @@
-import time
 from src.get_common_data import *
-from src.pub.leszvigasz_page import goToLeszVigasz
-from src.pub.leszvigasz.drink import drinkPalinkaLeszVigasz, drinkBeerLeszVigasz
 from src.pub.clan_pub.drink import drinkBeerClanPub, drinkPalinkaClanPub
 from src.clinic.clinic import getSoberInClinic
 from src.puke import puke
-from src.sleep import sleep, wakeUp
 from src.main_page import *
 from src.consume import eatSandwichActivity
 from src.garden.harvest import harvest
@@ -45,7 +41,7 @@ def getDrunk():
                 print("Not enough money")
                 break
 
-    for x in range(4):
+    for x in range(3):
         if int(getNumberOfOwnBeers()) > 0:
             page = drinkOwnBeer()
             print('own sor')
@@ -66,19 +62,21 @@ def getDrunk():
         else:
             print("drunk")
 
-    for x in range(4):
-        puke()
-        print('puke')
+    # for x in range(4):
+    #     puke()
+    #     print('puke')
 
 def getDrunkForVandalism():
     getSober()
     getMainPage()
-    for x in range(1):
+    for x in range(2):
         drinkOwnPalinka()
         print('own palinka')
-    for x in range(4):
+    for x in range(3):
         drinkOwnBeer()
         print('own sor')
+    drinkBeerClanPub()
+    print("clan beer")
 
 def getSober():
     addiction = getAddiction()
